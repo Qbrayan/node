@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+
+<html lang="en" manifest="demo.appcache">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>First project</title>
+<meta name="description" content="Example">
+<meta name="author" content="Bkariuki">
+<script>
+var x = document.getElementById("find");
+
+function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition, showError);
+    } else {
+        x.innerHTML = "Geolocation is not supported by this browser.";
+    }
+}
+
+function showPosition(position) {
+    var latlon = position.coords.latitude + "," + position.coords.longitude;
+
+    var img_url = "https://maps.googleapis.com/maps/api/staticmap?center="
+    +latlon+"&zoom=14&size=400x300&sensor=false";
+    document.getElementById("mapspace").innerHTML = "<img src='"+img_url+"'>";
+}
+
+function showError(error) {
+    switch(error.code) {
+        case error.PERMISSION_DENIED:
+            x.innerHTML = "User denied the request for Geolocation."
+            break;
+        case error.POSITION_UNAVAILABLE:
+            x.innerHTML = "Location information is unavailable."
+            break;
+        case error.TIMEOUT:
+            x.innerHTML = "The request to get user location timed out."
+            break;
+        case error.UNKNOWN_ERROR:
+            x.innerHTML = "An unknown error occurred."
+            break;
+    }
+}
+
+</script>
+</head>
+
+<body>
+
+<h1>Metropolitan Cities</h1>
+
+<section>
+<h2>London</h2>
+<p>London is the capital city of England.</p>
+<div>
+<a href="https://www.google.com/maps/place/London,+UK/@51.528308,-0.3817765,10z/data=!4m5!3m4!1s0x47d8a00baf21de75:0x52963a5addd52a99!8m2!3d51.5073509!4d-0.1277583" target="_blank">
+<div>
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d317718.69319292053!2d-0.3817765050863085!3d51.528307984912544!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47d8a00baf21de75%3A0x52963a5addd52a99!2sLondon%2C+UK!5e0!3m2!1sen!2s!4v1486468429602" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+<span>map</span>
+</div>
+</a>
+</div>
+</section>
+
+<section>
+<h2>Paris</h2>
+<p>Paris is the capital  city of France.</p>
+<div>
+<a href="https://www.google.com/maps/place/Paris,+France/@48.8587741,2.2074741,11z/data=!3m1!4b1!4m5!3m4!1s0x47e66e1f06e2b70f:0x40b82c3688c9460!8m2!3d48.856614!4d2.3522219" target="_blank">
+<div>
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d167998.10803373056!2d2.2074740643680624!3d48.85877410312378!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66e1f06e2b70f%3A0x40b82c3688c9460!2sParis%2C+France!5e0!3m2!1sen!2s!4v1486472181479" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+<span>map</span>
+</div>
+</a>
+</div>
+</section>
+<section>
+<h2>Brussels</h2>
+<p>Capital city of belgium,great city.</p>
+<div>
+<a href="https://www.google.com/maps/place/Brussels,+Belgium/@50.8386162,4.2233225,11z/data=!3m1!4b1!4m5!3m4!1s0x47c3c486740f9fff:0x10099ab2f4c8030!8m2!3d50.8503463!4d4.3517211" target="_blank">
+<div>
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d161254.2496584096!2d4.223322469685145!3d50.83861615004036!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c3c486740f9fff%3A0x10099ab2f4c8030!2sBrussels%2C+Belgium!5e0!3m2!1sen!2s!4v1486477252387" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+<span>map</span>
+</div>
+</a>
+</div>
+</section>
+
+
+
+<section>
+<p id="find">Click the button to get your position.</p>
+
+<button onclick="getLocation()">Get location</button>
+
+<div id="mapspace"></div>
+
+</section>
+</body>
+</html>
+
+
+
